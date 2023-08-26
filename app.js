@@ -5,6 +5,9 @@ const listElement = document.getElementById('list')
 const notes = []
 
 createButton.addEventListener('click', () =>{
+   if(inputElement.value.length===0){
+    return
+  }
   const noteText = inputElement.value
   notes.push({
     title: noteText,
