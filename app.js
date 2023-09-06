@@ -3,8 +3,11 @@ const createButton = document.getElementById('btn')
 const listElement = document.getElementById('list')
 const data = document.getElementById('data')
 let mode = 'time'
-
-setInterval(()=>{data.textContent = format(mode)},1000)
+update()
+setInterval(()=>{update()},1000)
+function update(){
+  data.textContent = format(mode)
+}
 function format(formatMode){
   const now = new Date()
   if(formatMode === 'data'){
