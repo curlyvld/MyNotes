@@ -1,11 +1,23 @@
 const inputElement = document.getElementById('inp')
 const createButton = document.getElementById('btn')
 const listElement = document.getElementById('list')
+const data = document.getElementById('data')
+let mode = 'time'
 
+setInterval(()=>{data.textContent = format(mode)},1000)
+function format(formatMode){
+  const now = new Date()
+  if(formatMode === 'data'){
+    return now.toLocaleDateString()
+  }
+  if(formatMode === 'time'){
+    return now.toLocaleTimeString()
+  }
+}
 const notes = []
 
 createButton.addEventListener('click', () =>{
-   if(inputElement.value.length===0){
+  if(inputElement.value.length===0){
     return
   }
   const noteText = inputElement.value
@@ -29,7 +41,6 @@ listElement.addEventListener('click', (event)=>{
 
   const type = event.target.dataset.type
   const index = Number(event.target.dataset.index)
-
   if (type == 'compl'){
     notes[index].completed = !notes[index].completed
     render()
